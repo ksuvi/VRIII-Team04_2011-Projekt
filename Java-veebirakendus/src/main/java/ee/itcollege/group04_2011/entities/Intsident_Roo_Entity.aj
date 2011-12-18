@@ -80,6 +80,13 @@ privileged aspect Intsident_Roo_Entity {
     public static List<Intsident> Intsident.findAllIntsidents() {
         return entityManager().createQuery("SELECT o FROM Intsident o", Intsident.class).getResultList();
     }
+
+    @SuppressWarnings("unchecked")
+	public static List<Intsident> Intsident.findAllVahtkonnaIntsidendid(Vahtkond vahtkond) {
+        return entityManager().createNativeQuery("SELECT * from intsident, vahtkond_intsidendis "+
+        	    		"where intsident.intsident_ID = vahtkond_intsidendis.intsident_ID " +
+        					"and vahtkond_intsidendis.vahtkond_ID =" + vahtkond.getVahtkondId(), Intsident.class).getResultList();
+    }
     
     public static Intsident Intsident.findIntsident(Long intsidentId) {
         if (intsidentId == null) return null;

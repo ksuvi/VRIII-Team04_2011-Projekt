@@ -9,7 +9,9 @@ import ee.itcollege.group04_2011.entities.IsikIntsidendi;
 import ee.itcollege.group04_2011.entities.ObjektIntsidendi;
 import ee.itcollege.group04_2011.entities.Piiriloik;
 import ee.itcollege.group04_2011.entities.PiirivalvurIntsidendi;
+import ee.itcollege.group04_2011.entities.Vahtkond;
 import ee.itcollege.group04_2011.entities.VahtkondIntsidendi;
+import ee.itcollege.group04_2011.entities.VahtkonnaIntsidendid;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -100,6 +102,12 @@ privileged aspect IntsidentController_Roo_Controller {
     @ModelAttribute("intsidents")
     public Collection<Intsident> IntsidentController.populateIntsidents() {
         return Intsident.findAllIntsidents();
+    }
+    
+    @ModelAttribute("vahtkonds")
+    public Collection<VahtkonnaIntsidendid> IntsidentController.populateVahtkonds() {
+    	return VahtkonnaIntsidendid.annaVahtkondadekaupaIntsidendid();
+        // return Intsident.findAllVahtkonnaIntsidendid(vahtkond);
     }
     
     @ModelAttribute("isikintsidendis")

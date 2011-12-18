@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <h1>Intsidendid vahtkondade kaupa</h1>
+    <c:forEach items="${vahtkonds}" var="v">
+      	<h2>Vahtkonna nimi: ${v.vahtkond.nimetus}</h2>
+      	<c:forEach items="${v.intsidendid}" var="i">
+      		<p><b>Intsidendi andmed</b></p>
+      		<p>${i.intsidentId}</p>
+      		<p>${i.kood}</p>
+      		<p>${i.avatud}</p>
+      		<p>${i.kirjeldus}</p>
+    	</c:forEach>   
+    </c:forEach>   
+    
     <page:list id="pl_ee_itcollege_group04_2011_entities_Intsident" items="${intsidents}" z="E5DFK/7/il0juc5d6udCXrqikI8=">
         <table:table data="${intsidents}" id="l_ee_itcollege_group04_2011_entities_Intsident" path="/intsidents" typeIdFieldName="intsidentId" z="raUN/Xt9V3TaUWysuIsMOeRtt+I=">
             <table:column id="c_ee_itcollege_group04_2011_entities_Intsident_avaja" property="avaja" z="E65wOm0agOCVd5YaDxWWUQj15Vs="/>
